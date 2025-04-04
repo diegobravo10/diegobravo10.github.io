@@ -1,0 +1,638 @@
+
+body{
+    background: rgb(236, 226, 206); ;
+}
+
+.cabecera{
+    text-align-last: center;
+}
+.cabecera h1{
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px;
+    width: 40%; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background-color: #000000;
+    color: white;
+    margin-top: 10px;
+    margin-left: auto; 
+    margin-right: auto; 
+    border-radius: 15px;
+}
+.juego{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.jugador1, .jugador2 {
+    width: 30%; 
+    text-align: center;
+    border: 1px solid black; 
+    border-radius: 10px;
+    margin-top: -15px;
+}
+.jugador1{
+    background-color: rgb(56, 56, 180);
+    align-items: center;
+    color:white;
+    font-family: fantasy;
+    font-size: 20px;
+}
+.jugador2{
+    background-color: rgb(190, 44, 44);
+    color:white;
+    font-family: fantasy;
+    font-size: 20px;
+}
+
+/* Para cmabiar el nombre de los jugadores*/
+.name-form {
+  background-color: rgb(250, 250, 250);
+    color:rgb(13, 12, 12);
+  text-align: center;
+  padding: 20px;
+}
+
+.juego {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+/*Estilos para la tabla de resultados*/
+
+.resultados {
+    bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; 
+    height: 300px; 
+
+}
+
+.tablaR table {
+  /*border-collapse: collapse;*/
+  width: 100%; 
+  text-align: center;
+  margin-top: -30px;
+  margin-left: -20px;
+}
+
+.tablaR th, .tablaR td {
+  /*border: 1px solid black;*/
+  padding: 10px;
+}
+
+.borde{
+background: rgb(236, 226, 206); 
+border-color: #646cff ;
+}
+
+#total-juego{
+background-color: #eb764f;
+font-family: fantasy;
+}
+
+#player11{
+  background-color: rgb(56, 56, 180);
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#player22{
+  background-color: rgb(190, 44, 44);
+  color: rgb(227, 247, 253);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#ronda1-p1, #ronda2-p1,#ronda3-p1{
+  background-color: rgb(81, 81, 228);
+  color: rgb(219, 244, 255);
+  font-family: fantasy;
+}
+
+#ronda1-p2, #ronda2-p2,#ronda3-p2{
+  background-color: rgb(248, 108, 108);
+  color: rgb(37, 22, 22);
+  font-family: fantasy;
+}
+
+#totalp1{
+background-color: rgb(39, 39, 217);
+color: rgb(219, 244, 255);
+font-family: fantasy;
+}
+#totalp2{
+background-color: rgb(237, 76, 76);
+color: rgb(37, 22, 22);
+font-family: fantasy;
+}
+
+/*Para el boton girar*/
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .btnGirar{
+    margin-top: -30px ;
+  }
+  .btn {
+    position: relative;
+    width: 200px;  /* Ajusta el tamaño */
+    height: 200px; /* Ajusta el tamaño */
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(120, 124, 186);
+    background: none;
+    border: 2px solid #646cff;
+    border-radius: 50%; /* Hace que el botón sea circular */
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease; /* Transicion suave sobre el boton*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .liquid {
+    background: linear-gradient(#646cff 0 0) no-repeat calc(200% - var(--p, 0%))
+      100% / 200% var(--p, 0.2em);
+    transition: 0.3s var(--t, 0s),
+      background-position 0.3s calc(0.3s - var(--t, 0s)); /*Se controla el inicio del efecto */
+  }
+  
+  .liquid:hover {
+    --p: 100%;
+    --t: 0.3s;
+    color: #fff;
+    animation: pulse 0.6s ease-in-out infinite; /*Se activa la animacion*/
+  }
+  
+  .btn span {
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  /*Para las reglas*/
+/* Fondo del modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex; /*Se usa para centrar el contenido*/
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Para que el modal este encima de los otros elementos*/
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Contenedor del contenido */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Se da una sombra*/
+}
+
+/* Botón de cerrar */
+.close-btn {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    display: inline-block;
+    margin-top: 10px;
+    width: 40%;
+    padding: 10px;
+    background: #646cff;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer; /*Para cambiar el puntero a mano al momento de seleccionar*/
+    border-color:  #646cff;;
+}
+
+.close-btn:hover {
+    background: #535bf2;
+}
+
+
+.modal-checkbox:checked + .modal {
+    opacity: 0;
+    visibility: hidden;
+}
+  
+
+/*Para el boton de reiniciar*/
+.reiniciar{
+    position: absolute;
+    bottom: 120px;
+    right: 10px;
+}
+
+.reinicio{
+    border: none; 
+    color: rgb(254, 254, 254); 
+    font-family:fantasy;
+    font-size: 20px;
+    padding: 14px 28px; 
+    cursor: pointer; 
+    border-radius: 5px;
+    background-color: rgb(56, 56, 180); 
+}
+
+.reinicio:hover{
+    background-color: rgb(190, 44, 44);
+    color: white;
+}
+
+/*Estilo para los dados*/
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 60px;
+  gap: 20px;
+  height: 100vh;
+  margin-bottom: -560px
+}
+
+.columna {
+  width: 200px;
+  height: 200px;
+  margin: -15px;
+  position: relative;
+  perspective: 600px; /*Se establece la profundidad en 3D del dado */
+  top: -150px;
+
+}
+
+.cube1, .cube2 {
+  transform: translateY(180px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube-face {
+  position: absolute; /*Absoluta para poder moverse libremente*/
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  background: white;
+
+  border: black 1px solid;
+  border-radius: 5%;
+}
+
+.uno {
+  transform: translateZ(100px);
+}
+
+.seis {
+  transform: rotateY(180deg) translateZ(100px);
+}
+
+.tres {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.cuatro {
+  transform: rotateY(90deg) translateZ(100px);
+}
+
+.cinco {
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+.dos {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+.inside {
+  display: grid; /*Establecemos un contenedor para organizar los puntos */
+  grid-template-columns: repeat(3, 40px); /*3 columnas y 3 filas de 40 px de alto */
+  grid-template-rows: repeat(3, 40px);
+}
+
+.dot {
+  height: 35px;
+  width: 35px;
+  background-color: black;
+  border-radius: 50%;
+  justify-self: center;
+  align-self: center;
+}
+
+.uno .inside .dot {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.seis .inside .dot:nth-child(1) {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.seis .inside .dot:nth-child(2) {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.seis .inside .dot:nth-child(3) {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.seis .inside .dot:nth-child(4) {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.seis .inside .dot:nth-child(5) {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.seis .inside .dot:nth-child(6) {
+  grid-row: 3;
+  grid-column: 3;
+}
+
+.tres .inside .dot:nth-child(1) {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.tres .inside .dot:nth-child(2) {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.tres .inside .dot:nth-child(3) {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.cuatro .inside .dot:nth-child(1) {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.cuatro .inside .dot:nth-child(2) {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.cuatro .inside .dot:nth-child(3) {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.cuatro .inside .dot:nth-child(4) {
+  grid-row: 3;
+  grid-column: 3;
+}
+
+.cinco .inside .dot:nth-child(1) {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.cinco .inside .dot:nth-child(2) {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.cinco .inside .dot:nth-child(3) {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.cinco .inside .dot:nth-child(4) {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.cinco .inside .dot:nth-child(5) {
+  grid-row: 3;
+  grid-column: 3;
+}
+
+.dos .inside .dot:nth-child(1) {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.dos .inside .dot:nth-child(2) {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.base {
+  width: 300px; 
+  height: 30px; 
+  background-color: #444;
+  position: absolute;
+  left: 50%;
+  transform: translateY(240px) translateX(-50%);
+  border-radius: 10px; 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+#player1{
+  background-color: rgb(56, 56, 180);
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#player2{
+  background-color: rgb(190, 44, 44);
+  color: rgb(227, 247, 253);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+/*Diseño de los labels e inputs*/
+label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+/* Campos de entrada */
+input {
+  text-align: center;
+  width: 50%;
+  padding: 8px;
+  margin-bottom: 15px; /*Agrega un espaciado entre elementos */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Estilo para el mensaje de turnos*/
+.turnos h3 {
+  font-size: 24px; 
+  font-weight: bold; 
+  color: #ffffff; 
+  text-transform: uppercase; /* Convertir texto a mayúsculas */
+  background: linear-gradient(45deg, #ff5733, #ffbd33); 
+  padding: 10px 20px; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center; 
+  display: inline-block; /* Ajustar el tamaño al texto */
+  animation: parpadeo 1s infinite alternate; /* Animación de parpadeo */
+}
+
+/* Animación de parpadeo */
+@keyframes parpadeo {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.5; transform: scale(1.1); }
+}
+#turnop1 {
+  margin-left: -100px; 
+}
+
+#turnop2 {
+  margin-right: -100px; 
+}
+
+/*Para el final mostrar el ganador*/
+.modal-hidden {
+  display: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilo del modal */
+.resultadosf {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+/* Oculta el modal por defecto */
+.hidden {
+  display: none;
+}
+
+
+#res{
+  font-family: fantasy;
+  font-size: 30px;
+  padding: auto;
+  color:rgb(64, 168, 104)
+
+}
+
+#ganador{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color:rgb(0, 0, 0);
+  font-size: 20px;
+
+
+}
+#btnCierre, #btnContinuar{
+  border: none; 
+  color: rgb(245, 245, 245); 
+  font-family:fantasy;
+  font-size: 20px;
+  padding: 14px 28px; 
+  cursor: pointer; 
+  border-radius: 10px;
+  background-color: rgb(56, 56, 180); 
+}
+
+
+
+#btnCierre:hover, #btnContinuar:hover{
+  background-color: rgb(190, 44, 44);
+  color: white;
+
+}
+.botonesCierre {
+  text-align: center;
+  display: flex;
+  gap: 20px; /*Espaciado entre botones*/
+  justify-content: center; 
+  align-items: center; 
+}
+
+/*Historial*/
+#tb_historial {
+  width: 60%;
+  margin: auto;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; 
+  overflow: hidden; /*Control del contenido*/
+
+}
+
+
+#tb_historial th {
+  background: #d8ad51;
+  color: white;
+  padding: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+}
+
+
+#tb_historial th.historial {
+  background: #9c6c35;
+  font-size: 1.5em;
+  padding: 15px;
+  
+}
+
+#tb_historial td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #777777;
+}
+
+

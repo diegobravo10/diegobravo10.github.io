@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duelo de Dados</title>
+    <link href="assest/estilo.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="modal" id="gameModal">
+    <div class="modal-content">
+        <h2>Reglas del Juego</h2>
+        <p>1. Los jugadores se turnarán para lanzar los dados.</p>
+        <p>2. Se podrá girar los dados una sola vez por turno.</p>
+        <p>3. El resultado de cada jugador se acumulará en la tabla de resultados y se sumarán al final de la partida.</p>
+        <p>4. El jugador con mayor puntaje será el ganador.</p>
+
+        <h3 id="jugadores">¿Como se llaman?</h3>
+        <form id="nameInputForm">
+            <label for="player1">Jugador 1:</label>
+            <input type="text" id="player1" placeholder="Nombre de Jugador 1" required>
+            <br>
+            <label for="player2">Jugador 2:</label>
+            <input type="text" id="player2" placeholder="Nombre de Jugador 2" required>
+            <br>
+            <button type="submit" id="modalToggle" class="close-btn">¡Comenzar!</button>
+        </form>
+    </div>
+</div>
+
+    <div class="cabecera">
+        <h1>Duelo de Dados</h1>
+    </div>
+    <div class="juego">
+        <div class="jugador1">
+            <h2 id="namePlayer1">Player 1</h2>
+        </div>  
+        <div class="jugador2">
+            <h2 id="namePlayer2">Player 2</h2>
+        </div>
+    </div>
+    <div class="juego">
+        <div class="turnos">
+            <h3 id="turnop1">Tu Turno</h3>
+        </div>  
+        <div class="turnos">
+            <h3 id="turnop2">...</h3>
+        </div>
+    </div>
+
+        <div class="container">
+            <div class="columna">
+                    <div class="cube1">
+                        <div class="cube-face uno">
+                            <div class="inside">
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face seis">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face tres">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face cuatro">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face cinco">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face dos">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="base">
+                        
+                    </div>
+                </div>
+            <div class="btnGirar">
+                    <button id="giro" class="btn liquid">
+                        <span>Girar</span> 
+                    </button>
+            </div>
+           
+            <div class="columna">
+                    <div class="cube2">
+                        <div class="cube-face uno">
+                            <div class="inside">
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face seis">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face tres">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face cuatro">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face cinco">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="cube-face dos">
+                            <div class="inside">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="base">
+                        
+                    </div>
+            </div>
+        </div>
+        <div class="resultados">
+            <div class="tablaR">
+                <table>
+                    <tr>
+                        <th class="borde"></th>
+                        <th id="player11">Player 1</th>
+                        <th id="player22">Player 2</th>
+                    </tr>
+                    <tr>
+                        <td class="borde"></td>
+                        <td id="ronda1-p1">0</td>
+                        <td id="ronda1-p2">0</td>
+                    </tr>
+                    <tr>
+                        <td class="borde"></td>
+                        <td id="ronda2-p1">0</td>
+                        <td id="ronda2-p2">0</td>
+                    </tr>
+                    <tr>
+                        <td class="borde"></td>
+                        <td id="ronda3-p1">0</td>
+                        <td id="ronda3-p2">0</td>
+                    </tr>
+                    <tr>
+                        <td id="total-juego">Total</td>
+                        <td id="totalp1">0</td>
+                        <td id="totalp2">0</td>
+
+                    </tr>
+                </table>
+            </div>
+            <div id="btnReinicio" class="reiniciar">
+                <button class="reinicio">Reiniciar</button>
+            </div>
+        </div>
+
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div id="result-final" class="resultadosf">
+                <div class="contenedor">
+                    <h2 id="res"></h2>
+                    <p id="ganador"></p>
+                    <div class="botonesCierre">
+                        <button id="btnCierre">Reiniciar</button>
+
+                        <button id="btnContinuar">Seguir Jugando</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div>
+            <table id="tb_historial" border="1">
+                <thead>
+                    <tr>
+                        <th colspan="5" class="historial">Historial</th>
+                    </tr>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Player 1</th>
+                        <th>Puntaje</th>
+                        <th>Player 2</th>
+                        <th>Puntaje</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaPartida">
+
+                </tbody>
+            </table>
+        </div>
+        
+    <script src="assest/script.js"></script>
+</body>
+</html>
